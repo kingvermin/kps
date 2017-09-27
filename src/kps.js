@@ -1,83 +1,79 @@
-// tabrisjs-esimerkki: Kivi-paperi-sakset, TUL 2016
+// tabrisjs-esimerkki: Kivi-paperi-sakset, TUL 2016/2017
 
 // muuttujien alustukset
 var cpoints = 0 // koneen pisteet
 var upoints = 0 // pelaajan pisteet
 
-var page = new tabris.Page({
-  title: "Kivi - Paperi - Sakset",
-  background: "#99ccff", 
-  topLevel: true
-});
+const {Button, ImageView, TextView, ui} = require('tabris');
 
 // käyttäjän valintakuvat
-new tabris.ImageView({
+new ImageView({
   width: 10, height: 10, 
   layoutData: {width: 150,top: 30},
   image: {src: "http://vaolabs.fi/tul/tabrisjs/kivi.png"},
   highlightOnTouch: true
 }).on("tap", function() {
   arvonta("kivi");  
-}).appendTo(page);
+}).appendTo(ui.contentView);
 
-new tabris.ImageView({
+new ImageView({
   layoutData: {width: 150, top: 170},
   image: {src: "http://vaolabs.fi/tul/tabrisjs/paperi.png"},
   highlightOnTouch: true
 }).on("tap", function() {
   arvonta("paperi");  
-}).appendTo(page);
+}).appendTo(ui.contentView);
 
-new tabris.ImageView({
+new ImageView({
   layoutData: {width: 150, top: 320},
   image: {src: "http://vaolabs.fi/tul/tabrisjs/sakset.png"},
   highlightOnTouch: true
 }).on("tap", function() {
   arvonta("sakset");  
-}).appendTo(page);
+}).appendTo(ui.contentView);
 
 // koneen vastauskuva
-var ccpic = new tabris.ImageView({
+var ccpic = new ImageView({
   layoutData: {width: 150, top: 300, left: 200, top: 150},
   highlightOnTouch: true
 }).on("tap", function() {
   // 
-}).appendTo(page);
+}).appendTo(ui.contentView);
 
 
 // "teksti: Pelaaja:"
-new tabris.TextView({
+new TextView({
   font: "12px",
   layoutData: {left: 10, top: 10 },
   text: "Pelaaja: "
-}).appendTo(page);
+}).appendTo(ui.contentView);
 
 // "teksti: Kone:"
-new tabris.TextView({
+new TextView({
   font: "12px",
   layoutData: {left: 200, top: 120 },
   text: "Kone: "
-}).appendTo(page);
+}).appendTo(ui.contentView);
 
 // tekstikenttä tulokselle
-var gameresult = new tabris.TextView({
+var gameresult = new TextView({
   font: "24px",
   layoutData: {centerX: 0, top: 500 }
-}).appendTo(page);
+}).appendTo(ui.contentView);
 
 // tekstikenttä pelaajan pisteille
-var userpoints = new tabris.TextView({
+var userpoints = new TextView({
   font: "24px",
   layoutData: {left: 10, top: 500 },
   text: "0"
-}).appendTo(page);
+}).appendTo(ui.contentView);
 
 // tekstikenttä koneen pisteille
-var computerpoints = new tabris.TextView({
+var computerpoints = new TextView({
   font: "24px",
   layoutData: {left: 300, top: 500 },
   text: "0"
-}).appendTo(page);
+}).appendTo(ui.contentView);
 
 // koneen valinnan arvonta
 function arvonta(uc) {
@@ -177,5 +173,3 @@ function tarkistus(uc, cc) {
   }
       
 }
-
-page.open();
